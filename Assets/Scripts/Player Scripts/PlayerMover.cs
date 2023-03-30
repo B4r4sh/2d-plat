@@ -11,19 +11,18 @@ public class PlayerMover : MonoBehaviour
 
     private Rigidbody2D _playerRigedBody;
     private Animator _playerAnimator;
-    private Transform _playerTransform;
 
     private bool isPlayerMoveRight;
     private bool isGroundUnderFeet = true;
-    private bool isPlayerRun = false;
 
     private float _rayDistance;
+    private int _isRunAnimationHush;
     void Start()
     {
         _playerRigedBody = GetComponent<Rigidbody2D>();
         _rayDistance = 1f; 
         _playerAnimator = GetComponent<Animator>();
-        _playerTransform = GetComponent<Transform>();
+        _isRunAnimationHush = Animator.StringToHash("isRun");
     }
 
     private void Update()
@@ -36,7 +35,7 @@ public class PlayerMover : MonoBehaviour
                 RotatePlayer();
             }
 
-            _playerAnimator.SetBool("isRun", true);
+            _playerAnimator.SetBool(_isRunAnimationHush, true);
             transform.Translate(_speed * Time.deltaTime, 0, 0);
         }
         else if (Input.GetKey(KeyCode.A))
@@ -46,12 +45,12 @@ public class PlayerMover : MonoBehaviour
                 RotatePlayer();
             }
 
-            _playerAnimator.SetBool("isRun", true);
+            _playerAnimator.SetBool(_isRunAnimationHush, true);
             transform.Translate(_speed * Time.deltaTime, 0, 0);
         }
         else
         {
-            _playerAnimator.SetBool("isRun", false);
+            _playerAnimator.SetBool(_isRunAnimationHush, false);
         }
 
         //// Ïðûæîê \\\\
