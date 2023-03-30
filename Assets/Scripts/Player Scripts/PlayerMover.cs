@@ -4,10 +4,14 @@ using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using DG.Tweening;
 
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Rigidbody2D))]
+
 public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
+    [SerializeField] private LayerMask _groundLayer;
 
     private Rigidbody2D _playerRigedBody;
     private Animator _playerAnimator;
@@ -74,7 +78,7 @@ public class PlayerMover : MonoBehaviour
 
     private void IsThereGroundUnderFeet()
     {
-        RaycastHit2D hit = Physics2D.Raycast(_playerRigedBody.position, Vector2.down, _rayDistance, LayerMask.GetMask("Ground"));
+        RaycastHit2D hit = Physics2D.Raycast(_playerRigedBody.position, Vector2.down, _rayDistance, _groundLayer);
 
         if (hit.collider == true)
         {

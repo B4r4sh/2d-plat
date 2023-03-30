@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+[RequireComponent(typeof(Rigidbody2D))]
+
 public class OpossumMover : MonoBehaviour
 {
     [SerializeField] private Vector2[] _wayPoints;

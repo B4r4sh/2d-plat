@@ -4,9 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(PlayerMover))]
-[RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(PlayerDeath))]
-[RequireComponent(typeof(Animator))]
 
 public class Player : MonoBehaviour
 {

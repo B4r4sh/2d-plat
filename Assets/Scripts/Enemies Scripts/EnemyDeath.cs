@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class EnemyDeath : MonoBehaviour
 {
     [SerializeField] private Collider2D _deathCollider;
